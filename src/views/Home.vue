@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <h2 class="text-center">Buscar:</h2>
+    <v-row>
+      <v-col cols="3"></v-col>
+      <v-col cols="6">
+        <v-card>
+          <v-form @submit.prevent="buscar">
+            <v-text-field v-model="nombre" placeholder="Buscar"></v-text-field>
+            <v-btn block color="secondary" @click.prevent="buscar"
+              >Buscar</v-btn
+            >
+          </v-form>
+        </v-card>
+      </v-col>
+      <v-col cols="3"></v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      nombre: "",
+    };
+  },
+  methods: {
+    buscar() {
+      this.$router.push({
+        name: "Campeon",
+        params: { name: this.nombre },
+      });
+    },
   },
 };
 </script>
