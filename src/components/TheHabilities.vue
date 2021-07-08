@@ -13,7 +13,6 @@
               <v-col cols="2">
                 <v-avatar size="36px">
                   <img alt="Habilidad" :src="getIcon(hability.image.full)" />
-                  <v-icon></v-icon>
                 </v-avatar>
               </v-col>
               <v-col class="hidden-xs-only" cols="5">

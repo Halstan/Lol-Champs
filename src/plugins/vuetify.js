@@ -20,6 +20,10 @@ export default new Vuetify({
         success: "#4CAF50",
         warning: "#FFC107",
       },
+      dark: {
+        primary: "#212121",
+        background: "",
+      },
     },
   },
   lang: {

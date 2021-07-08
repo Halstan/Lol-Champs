@@ -10,6 +10,7 @@
           :habilities="campeon.spells"
           :partype="campeon.partype"
         ></the-habilities>
+        <the-passive :passive="campeon.passive"></the-passive>
       </v-col>
     </v-row>
     <the-description :champ="campeon"></the-description>
@@ -27,8 +28,9 @@
 import TheLoadingScreen from "@/components/TheLoadingScreen";
 import TheDescription from "@/components/TheDescription.vue";
 import TheHabilities from "@/components/TheHabilities.vue";
+import ThePassive from "@/components/ThePassive.vue";
 export default {
-  components: { TheLoadingScreen, TheDescription, TheHabilities },
+  components: { TheLoadingScreen, TheDescription, TheHabilities, ThePassive },
   name: "Campeon",
   data() {
     return {
