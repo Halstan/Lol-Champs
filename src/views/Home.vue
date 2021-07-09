@@ -1,14 +1,31 @@
 <template>
   <div>
-    <h2 class="text-center">Buscar:</h2>
+    <h2 class="text-center">Search:</h2>
     <v-row>
       <v-col cols="3"></v-col>
       <v-col cols="6">
         <v-card>
-          <v-form @submit.prevent="buscar">
-            <v-text-field v-model="nombre" placeholder="Buscar"></v-text-field>
+          <v-form @submit.prevent="buscar" class="mt-3">
+            <v-row no-gutters>
+              <v-col class="ml-2">
+                <v-text-field
+                  v-model.trim="nombre"
+                  placeholder="Champion"
+                ></v-text-field>
+              </v-col>
+              <v-col class="mr-2">
+                <v-select
+                  v-model="lang"
+                  label="Language"
+                  :items="items"
+                  item-text="name"
+                  item-value="code"
+                ></v-select>
+              </v-col>
+            </v-row>
+
             <v-btn block color="secondary" @click.prevent="buscar"
-              >Buscar</v-btn
+              >Search</v-btn
             >
           </v-form>
         </v-card>
@@ -24,13 +41,45 @@ export default {
   data() {
     return {
       nombre: "",
+      lang: "",
+      items: [
+        {
+          name: "Seleccione",
+          code: "",
+        },
+        {
+          name: "Español Latino",
+          code: "es_MX",
+        },
+        {
+          name: "Español",
+          code: "es_ES",
+        },
+        {
+          name: "English",
+          code: "en_US",
+        },
+        {
+          name: "Japanese",
+          code: "ja_JP",
+        },
+        {
+          name: "French",
+          code: "fr_FR",
+        },
+      ],
     };
+  },
+  computed: {
+    noSpaces() {
+      return this.nombre.replace(" ", "");
+    },
   },
   methods: {
     buscar() {
       this.$router.push({
         name: "Campeon",
-        params: { name: this.nombre },
+        params: { name: this.noSpaces, lang: this.lang },
       });
     },
   },

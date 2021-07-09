@@ -15,6 +15,14 @@
       </div>
 
       <v-spacer></v-spacer>
+      <div class="d-flex align-right">
+        <span
+          >Hecho por:
+          <a class="link" href="https://github.com/Halstan" target="_blanck"
+            >Enzo Arauco</a
+          ></span
+        >
+      </div>
     </v-app-bar>
 
     <v-main>
@@ -34,3 +42,10 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.link {
+  color: #000000;
+  text-decoration: none;
+}
+</style>

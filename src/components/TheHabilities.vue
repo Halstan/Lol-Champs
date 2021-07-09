@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3">
     <v-row justify="center">
-      <v-subheader class="display-1">Habilidades</v-subheader>
+      <v-subheader class="display-1">Habilities:</v-subheader>
       <v-expansion-panels popout>
         <v-expansion-panel
           v-for="(hability, i) in habilities"
@@ -15,7 +15,7 @@
                   <img alt="Habilidad" :src="getIcon(hability.image.full)" />
                 </v-avatar>
               </v-col>
-              <v-col class="hidden-xs-only" cols="5">
+              <v-col cols="5">
                 <strong v-html="hability.name"></strong>
                 <span v-if="hability.costBurn" :class="isEnergy">
                   &nbsp;({{ hability.costBurn }} de {{ partype }})

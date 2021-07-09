@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card elevation="4" class="mt-3">
-      <v-card-title>Historia</v-card-title>
+      <v-card-title>History</v-card-title>
       <v-card-text> {{ champ.lore }} </v-card-text>
     </v-card>
     <v-card elevation="4" class="mt-3">
@@ -13,7 +13,7 @@
       </v-card-text>
     </v-card>
     <v-card elevation="4" class="mt-3">
-      <v-card-title>Tips Enemigos</v-card-title>
+      <v-card-title>Enemy tips:</v-card-title>
       <v-card-text v-for="(enemytip, index) of champ.enemytips" :key="index">
         <ul>
           <li>{{ enemytip }}</li>

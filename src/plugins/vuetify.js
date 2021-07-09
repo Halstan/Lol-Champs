@@ -9,7 +9,12 @@ export default new Vuetify({
   theme: {
     options: {
       customProperties: true,
+      themeCache: {
+        get: (key) => localStorage.getItem(key),
+        set: (key, value) => localStorage.setItem(key, value),
+      },
     },
+    dark: true,
     themes: {
       light: {
         primary: "#0064cf",
@@ -19,10 +24,6 @@ export default new Vuetify({
         info: "#2196F3",
         success: "#4CAF50",
         warning: "#FFC107",
-      },
-      dark: {
-        primary: "#212121",
-        background: "",
       },
     },
   },

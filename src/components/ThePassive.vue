@@ -2,7 +2,7 @@
   <v-container class="mt-4">
     <v-row justify="center">
       <v-expansion-panels popout>
-        <v-subheader class="display-1">Pasiva</v-subheader>
+        <v-subheader class="display-1">Passive:</v-subheader>
         <v-expansion-panel hide-actions>
           <v-expansion-panel-header>
             <v-row align="center" class="spacer" no-gutters>
@@ -11,7 +11,7 @@
                   <img alt="Habilidad" :src="getIcon(passive.image.full)" />
                 </v-avatar>
               </v-col>
-              <v-col class="hidden-xs-only" cols="5">
+              <v-col cols="5">
                 <strong v-html="passive.name"></strong>
               </v-col>
             </v-row>
