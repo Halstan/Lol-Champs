@@ -14,7 +14,6 @@ export default new Vuetify({
         set: (key, value) => localStorage.setItem(key, value),
       },
     },
-    dark: true,
     themes: {
       light: {
         primary: "#0064cf",

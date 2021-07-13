@@ -11,6 +11,7 @@
                 <v-text-field
                   v-model.trim="nombre"
                   placeholder="Champion"
+                  autofocus
                 ></v-text-field>
               </v-col>
               <v-col class="mr-2">
@@ -41,10 +42,10 @@ export default {
   data() {
     return {
       nombre: "",
-      lang: "",
+      lang: "es_MX",
       items: [
         {
-          name: "Seleccione",
+          name: "Select",
           code: "",
         },
         {

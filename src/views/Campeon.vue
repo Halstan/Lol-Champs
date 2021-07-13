@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isLoading">
+  <div v-if="!isLoading && !isError">
     <h1 class="text-center">{{ fullTitle }}</h1>
     <v-row>
       <v-col cols="2" md="3" sm="4">
@@ -14,21 +14,16 @@
       </v-col>
     </v-row>
     <the-description :champ="campeon"></the-description>
-    <div v-for="(skin, index) of campeon.skins" :key="index">
+    <template>
+      <v-subheader class="text-center display-1 mt-3">Skins</v-subheader>
       <v-row>
-        <v-col>
+        <v-col v-for="(skin, index) of campeon.skins" :key="index" cols="auto">
           <the-skin :skin="skin" :id="campeon.id"></the-skin>
         </v-col>
       </v-row>
-    </div>
+    </template>
   </div>
-  <v-progress-circular
-    v-else
-    size="100"
-    indeterminate
-    color="primary"
-    style="width: 5rem; height: 5rem"
-  ></v-progress-circular>
+  <the-error v-else :champ="$route.params.name"></the-error>
 </template>
 
 <script>
@@ -37,6 +32,7 @@ import TheDescription from "@/components/TheDescription.vue";
 import TheHabilities from "@/components/TheHabilities.vue";
 import ThePassive from "@/components/ThePassive.vue";
 import TheSkin from "@/components/TheSkin.vue";
+import TheError from "../components/TheError.vue";
 export default {
   components: {
     TheLoadingScreen,
@@ -44,12 +40,14 @@ export default {
     TheHabilities,
     ThePassive,
     TheSkin,
+    TheError,
   },
   name: "Campeon",
   data() {
     return {
       campeon: {},
       isLoading: true,
+      isError: true,
     };
   },
   computed: {
@@ -64,6 +62,9 @@ export default {
     this.getCampeon();
   },
   methods: {
+    skins() {
+      return this.campeon.skins.shift();
+    },
     async getCampeon() {
       const name = this.$route.params.name;
       const language = this.$route.params.lang;
@@ -73,9 +74,11 @@ export default {
           `${process.env.VUE_APP_URL}${language}/champion/${name}.json`
         );
         this.campeon = await res.data.data[name];
+        this.campeon.skins = res.data.data[name].skins.slice(1);
+        this.isLoading = false;
+        this.isError = false;
       } catch (error) {
-        console.log(error);
-      } finally {
+        this.isError = true;
         this.isLoading = false;
       }
     },

@@ -13,11 +13,19 @@
           />
         </router-link>
       </div>
+      <div class="d-flex mt-6">
+        <v-switch
+          color="success"
+          v-model="isDark"
+          label="Theme"
+          @click="setTema()"
+        ></v-switch>
+      </div>
 
       <v-spacer></v-spacer>
       <div class="d-flex align-right">
         <span
-          >Hecho por:
+          >Made by:
           <a class="link" href="https://github.com/Halstan" target="_blanck"
             >Enzo Arauco</a
           ></span
@@ -34,12 +42,26 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   name: "App",
 
   data: () => ({
-    //
+    isDark: false,
   }),
+  created() {
+    this.isDark = this.isBlack;
+    this.loadTheme();
+  },
+  computed: {
+    ...mapState(["isBlack"]),
+  },
+  methods: {
+    ...mapActions(["setTheme", "loadTheme"]),
+    setTema() {
+      this.setTheme(this.isDark);
+    },
+  },
 };
 </script>
 

@@ -1,14 +1,10 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="auto">
-        <v-card>
-          <v-img :src="splash" max-height="560" width="308"></v-img>
-          <v-card-title>{{ skin.name }}</v-card-title>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-card>
+    <a :href="splash" target="_blanck">
+      <v-img :src="loading" max-height="560" width="308"></v-img>
+    </a>
+    <v-card-title class="body-2">{{ skin.name }}</v-card-title>
+  </v-card>
 </template>
 
 <script>
@@ -24,8 +20,11 @@ export default {
     },
   },
   computed: {
-    splash: function () {
+    loading: function () {
       return `${process.env.VUE_APP_CDN}${this.id}_${this.skin.num}.jpg`;
+    },
+    splash() {
+      return `${process.env.VUE_APP_SPLASH}${this.id}_${this.skin.num}.jpg`;
     },
   },
 };
