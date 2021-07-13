@@ -2,12 +2,12 @@
   <div>
     <h2 class="text-center">Search:</h2>
     <v-row>
-      <v-col cols="3"></v-col>
-      <v-col cols="6">
+      <v-col cols="1"></v-col>
+      <v-col cols="10">
         <v-card>
           <v-form @submit.prevent="buscar" class="mt-3">
-            <v-row no-gutters>
-              <v-col class="ml-2">
+            <v-row dense>
+              <v-col class="ml-2 sm-mr-2">
                 <v-text-field
                   v-model.trim="nombre"
                   placeholder="Champion"
@@ -31,7 +31,7 @@
           </v-form>
         </v-card>
       </v-col>
-      <v-col cols="3"></v-col>
+      <v-col cols="1"></v-col>
     </v-row>
   </div>
 </template>

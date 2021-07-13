@@ -1,6 +1,8 @@
 <template>
   <div v-if="!isLoading && !isError">
-    <h1 class="text-center">{{ fullTitle }}</h1>
+    <h1 class="text-center text-h6 text-lg-h3 text-md-h3 text-sm-h3">
+      {{ fullTitle }}
+    </h1>
     <v-row>
       <v-col cols="2" md="3" sm="4">
         <the-loading-screen :name="load"></the-loading-screen>
